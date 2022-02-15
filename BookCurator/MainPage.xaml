@@ -108,8 +108,10 @@
                     <DataTemplate x:DataType="data:Book">
                         <StackPanel Orientation="Vertical" 
                                 Margin="0,20,0,20">
-                            <Image Name ="BookImage" Source="{x:Bind ImageFile}" Height="45" Width="45" Margin="10,0,0,0"/>
-
+                            <Image Name ="BookImage" Source="{x:Bind ImageFile}"
+                                   Height="145" Width="145" Margin="10,0,0,0"/>
+                            <TextBlock Name ="BookTitle" Text="{x:Bind Title}" FontSize="18"/>
+                            <TextBlock Name ="BookAuthor" Text="{x:Bind Author}" FontSize="14"/>
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>

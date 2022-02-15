@@ -133,9 +133,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Images\Beloved.png" />
-    <Content Include="Assets\Images\PrideAndPrejudice.png" />
-    <Content Include="Assets\Images\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Classics\Beloved.png" />
+    <Content Include="Assets\Images\Romance\PrideAndPrejudice.png" />
+    <Content Include="Assets\Images\ScienceFiction\TheMoonIsAHarshMistress.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
