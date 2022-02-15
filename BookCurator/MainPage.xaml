@@ -1,0 +1,120 @@
+﻿<Page
+    x:Class="BookCurator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookCurator"
+    xmlns:data="using:BookCurator.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="0 0 0 6" 
+                BorderBrush="Black" 
+                Height="80" />
+
+        <RelativePanel Name="TopPanel"
+                       >
+            <TextBlock x:Name ="ProductName" 
+                     RelativePanel.AlignLeftWithPanel="True"
+                     Text="Book Curator" 
+                     Margin ="20,20,0,20"
+                     FontFamily="Comic Sans MS" 
+                     FontSize="30"
+                     Foreground="CornflowerBlue"/>
+
+            <ComboBox Name="SelectCategory"
+                      ItemsSource="{x:Bind MenuItems}"
+                      RelativePanel.RightOf="ProductName"
+                      RelativePanel.AlignVerticalCenterWith="ProductName"
+                      Height="40"
+                      Width="300"
+                      IsEditable="True"
+                      Text="Book Category"
+                      Margin ="100,20,0,20"
+                      SelectionChanged="SelectCategory_SelectionChanged">
+
+            </ComboBox>
+
+        </RelativePanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="BookCategoryTitle"
+                       Text="All Books"
+                       FontSize="50"
+                       FontFamily="Comic Sans MS" 
+                       Foreground="CornflowerBlue"
+                       TextAlignment="Center"
+                       Margin="0 20 0 20"/>
+
+            <GridView Grid.Row ="1" 
+                      Name="BooksInCategory"
+                      ItemsSource="{x:Bind Books}"
+                      IsItemClickEnabled="True"
+                      ItemClick="BooksInCategory_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Book">
+                        <StackPanel Orientation="Vertical" 
+                                Margin="0,20,0,20">
+                            <Image Name ="BookImage" Source="{x:Bind ImageFile}"
+                                   Height="145" Width="145" Margin="10,0,0,0"/>
+                            <TextBlock Name ="BookTitle" Text="{x:Bind Title}" FontSize="18"/>
+                            <TextBlock Name ="BookAuthor" Text="{x:Bind Author}" FontSize="14"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+            </GridView>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="0 6 0 0" 
+                BorderBrush="Black" 
+                Height="80" />
+
+            <TextBlock Name="ItemsSelected"
+                       Text="Books Selected"
+                       FontSize="50"
+                       FontFamily="Comic Sans MS" 
+                       Foreground="CornflowerBlue"
+                       TextAlignment="Center"
+                       Margin="0 20 0 20"/>
+
+
+            <GridView Grid.Row ="1" 
+                      Name="SelectedBooks"
+                      ItemsSource="{x:Bind Books}"
+                      IsItemClickEnabled="True"
+                      ItemClick="SelectedBooks_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Book">
+                        <StackPanel Orientation="Vertical" 
+                                Margin="0,20,0,20">
+                            <Image Name ="BookImage" Source="{x:Bind ImageFile}" Height="45" Width="45" Margin="10,0,0,0"/>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+            </GridView>
+        </Grid>
+    </Grid>
+</Page>
