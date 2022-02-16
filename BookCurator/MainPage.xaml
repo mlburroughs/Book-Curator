@@ -16,8 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <RelativePanel Name="TopPanel"
-                       >
+        <RelativePanel Name="TopPanel">
             <TextBlock x:Name ="ProductName" 
                      RelativePanel.AlignLeftWithPanel="True"
                      Text="Book Curator" 
@@ -38,9 +37,7 @@
                       Text="Book Categories"
                       Margin ="10,10,10,10"
                       SelectionChanged="SelectCategory_SelectionChanged">
-
             </ComboBox>
-
         </RelativePanel>
 
         <Grid Grid.Row="1">
@@ -62,32 +59,35 @@
                       Name="BooksInCategory"
                       ItemsSource="{x:Bind Books}"
                       IsItemClickEnabled="True"
-                      ItemClick="BooksInCategory_ItemClick"
+                      ItemClick="BooksInCategory_ItemClick" 
                       Margin="20, 0, 20, 10">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Book">
                         <StackPanel Orientation="Vertical" 
-                                Margin="0,0,0,0">
-                            <Image Name ="BookImage" Source="{x:Bind ImageFile}"
-                                   Height="100" Width="100" Margin="10,0,0,0"/>
+                                Margin="0,5,0,5"
+                                Width="100"
+                                    Height="190">
+                            <Image Name ="BookImage" 
+                                   Source="{x:Bind ImageFile}"
+                                   Height="100" 
+                                   Width="100" 
+                                   Margin="0,0,0,0"/>
                             <TextBlock Name ="BookTitle" 
                                        Text="{x:Bind Title}" 
                                        FontSize="14"
                                        FontFamily="Georgia" 
                                        FontWeight="Bold"
-                                       HorizontalAlignment="Center"
+                                       TextAlignment="Center"
                                        TextWrapping="WrapWholeWords"/>
                             <TextBlock Name ="BookAuthor" 
                                        Text="{x:Bind Author}" 
+                                       TextAlignment="Center"
                                        FontSize="10"
-                                       FontFamily="Verdana" 
-                                       HorizontalAlignment="Center"/>
+                                       FontFamily="Verdana"/>
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
-
             </GridView>
-
         </Grid>
 
         <Grid Grid.Row="2">
@@ -95,8 +95,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-
 
             <TextBlock Name="ItemsSelected"
                        Text="Books Selected"
@@ -116,21 +114,24 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Book">
                         <StackPanel Orientation="Vertical" 
-                                Margin="0,0,0,0">
+                                Margin="0,5,0,5"
+                                Width="100"
+                                Height="190">
                             <Image Name ="BookImage" Source="{x:Bind ImageFile}"
                                    Height="100" Width="100" Margin="0,0,0,0"/>
                             <TextBlock Name ="BookTitle" 
-                                       Text="{x:Bind Title}" 
+                                       Text="{x:Bind Title}"
                                        FontSize="14"
                                        FontFamily="Georgia" 
                                        FontWeight="Bold"
-                                       HorizontalAlignment="Center"
-                                       TextWrapping="WrapWholeWords"/>
+                                       TextWrapping="WrapWholeWords"
+                                       TextAlignment="Center"/>
                             <TextBlock Name ="BookAuthor" 
                                        Text="{x:Bind Author}" 
                                        FontSize="10"
-                                       FontFamily="Verdana" 
-                                       HorizontalAlignment="Center"/>
+                                       FontFamily="Verdana"
+                                       TextWrapping="WrapWholeWords"
+                                       TextAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
