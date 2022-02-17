@@ -107,7 +107,7 @@
 
             <GridView Grid.Row ="1" 
                       Name="SelectedBooks"
-                      ItemsSource="{x:Bind Books}"
+                      ItemsSource="{x:Bind BookSelections}"
                       IsItemClickEnabled="True"
                       ItemClick="SelectedBooks_ItemClick"
                       Margin="20, 0, 20, 10">

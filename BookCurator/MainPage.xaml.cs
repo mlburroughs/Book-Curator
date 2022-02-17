@@ -25,8 +25,10 @@ namespace BookCurator
     public sealed partial class MainPage : Page
     {
 
-        private ObservableCollection<Book> Books;
-        private List<MenuItem> MenuItems;
+        private readonly ObservableCollection<Book> Books;
+        private readonly List<MenuItem> MenuItems;
+        private readonly ObservableCollection<Book> BookSelections;
+        
 
 
         public MainPage()
@@ -34,6 +36,8 @@ namespace BookCurator
             this.InitializeComponent();
             Books = new ObservableCollection<Book>();
             BookManager.GetAllBooks(Books);
+
+            BookSelections = new ObservableCollection<Book>();
 
             MenuItems = new List<MenuItem>();
             MenuItems.Add(new MenuItem
@@ -81,12 +85,17 @@ namespace BookCurator
 
         private void BooksInCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            Book selectedBook = (Book)e.ClickedItem;
+            BookSelections.Add(selectedBook);
+            Books.Remove(selectedBook);
         }
-
+        
         private void SelectCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
+            MenuItem selection = (MenuItem)SelectCategory.SelectedItem;
+            BookCategoryTitle.Text = selection.CategoryTitle;
+            BookManager.GetBooksByCategory(Books, selection.Category);
 
         }
     }
