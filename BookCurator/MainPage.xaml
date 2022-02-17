@@ -57,7 +57,7 @@
 
             <GridView Grid.Row ="1" 
                       Name="BooksInCategory"
-                      ItemsSource="{x:Bind Books}"
+                      ItemsSource="{x:Bind BooksToAdd}"
                       IsItemClickEnabled="True"
                       ItemClick="BooksInCategory_ItemClick" 
                       Margin="20, 0, 20, 10">

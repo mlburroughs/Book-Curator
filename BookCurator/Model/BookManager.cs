@@ -18,14 +18,15 @@ namespace BookCurator.Model
             allBooks.ForEach(book => books.Add(book));
         }
 
-        public static void GetBooksByCategory(ObservableCollection<Book> books, BookCategory category)
+
+        public static void GetBooksByCategory(ObservableCollection<Book> books, ObservableCollection<Book> collection, BookCategory category)
         {
-            var allBooks = GetBooks();
-            var filteredBooks = allBooks.Where(book => book.Category == category).ToList();
+            var filteredBooks = collection.Where(book => book.Category == category && book.UnselectedBook).ToList();
             books.Clear();
 
             filteredBooks.ForEach(book => books.Add(book));
         }
+
         private static List<Book> GetBooks()
         {
             var books = new List<Book>();
@@ -35,5 +36,33 @@ namespace BookCurator.Model
 
             return books;
         }
+
+        public static void GetSelectedBooks(ObservableCollection<Book> selectedBooks, ObservableCollection<Book> allBooks)
+        {
+            var filteredBooks = allBooks.Where(book => book.UnselectedBook == false).ToList();
+            selectedBooks.Clear();
+
+            filteredBooks.ForEach(book => selectedBooks.Add(book));
+        }
+
+        public static void GetUnselectedBooks(ObservableCollection<Book> unselectedBooksCollection, ObservableCollection<Book> allBooks)
+        {
+            var filteredBooks = allBooks.Where(book => book.UnselectedBook).ToList();
+            unselectedBooksCollection.Clear();
+
+            filteredBooks.ForEach(book => unselectedBooksCollection.Add(book));
+        }
+
+        public static void UpdateStatus(ObservableCollection<Book> books, Book book)
+        {
+            foreach(Book item in books)
+            {
+                if(item.Label == book.Label)
+                {
+                    item.UnselectedBook = book.UnselectedBook;
+                }
+            }
+        }
+
     }
 }

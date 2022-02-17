@@ -27,6 +27,7 @@ namespace BookCurator.Model
         public string Description { get; set; }
         public string ImageFile { get; set; }
         public BookCategory Category { get; set; }
+        public bool UnselectedBook { get; set; }
 
         public Book(string label, string title, string author, string description, BookCategory category)
         {
@@ -36,6 +37,7 @@ namespace BookCurator.Model
             Description = description;
             ImageFile = $"/Assets/Images/{category}/{label}.png";
             Category = category;
+            UnselectedBook = true;
         }
     }
 }

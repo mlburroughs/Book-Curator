@@ -24,12 +24,11 @@ namespace BookCurator
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
         private readonly ObservableCollection<Book> Books;
         private readonly List<MenuItem> MenuItems;
         private readonly ObservableCollection<Book> BookSelections;
-        
-
+        private readonly ObservableCollection<Book> BooksToAdd;
+        private MenuItem Selection;
 
         public MainPage()
         {
@@ -38,6 +37,8 @@ namespace BookCurator
             BookManager.GetAllBooks(Books);
 
             BookSelections = new ObservableCollection<Book>();
+            BooksToAdd = new ObservableCollection<Book>();
+            BookManager.GetAllBooks(BooksToAdd);
 
             MenuItems = new List<MenuItem>();
             MenuItems.Add(new MenuItem
@@ -78,25 +79,33 @@ namespace BookCurator
 
         }
 
-        private void SelectedBooks_ItemClick(object sender, ItemClickEventArgs e)
+        private void SelectCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            Selection = (MenuItem)SelectCategory.SelectedItem;
+            BookCategoryTitle.Text = Selection.CategoryTitle;
+            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
         }
 
         private void BooksInCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
             Book selectedBook = (Book)e.ClickedItem;
-            BookSelections.Add(selectedBook);
-            Books.Remove(selectedBook);
+            selectedBook.UnselectedBook = false;
+            BookManager.UpdateStatus(Books, selectedBook);
+            BookManager.GetSelectedBooks(BookSelections, Books);
+            BookManager.GetUnselectedBooks(BooksToAdd, Books);
+            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
         }
-        
-        private void SelectCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            MenuItem selection = (MenuItem)SelectCategory.SelectedItem;
-            BookCategoryTitle.Text = selection.CategoryTitle;
-            BookManager.GetBooksByCategory(Books, selection.Category);
 
+        private void SelectedBooks_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Book unselectedBook = (Book)e.ClickedItem;
+            unselectedBook.UnselectedBook = true;
+            BookManager.UpdateStatus(Books, unselectedBook);
+            BookManager.GetSelectedBooks(BookSelections, Books);
+            BookManager.GetUnselectedBooks(BooksToAdd, Books);
+            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
         }
+
     }
 }
