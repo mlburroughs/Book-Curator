@@ -18,7 +18,6 @@ namespace BookCurator.Model
             allBooks.ForEach(book => books.Add(book));
         }
 
-
         public static void GetBooksByCategory(ObservableCollection<Book> books, ObservableCollection<Book> collection, BookCategory category)
         {
             var filteredBooks = collection.Where(book => book.Category == category && book.UnselectedBook).ToList();
@@ -30,10 +29,9 @@ namespace BookCurator.Model
         private static List<Book> GetBooks()
         {
             var books = new List<Book>();
-            books.Add(new Book("PrideAndPrejudice", "Pride And Prejudice", "Jane Austen", "placeholder", BookCategory.Romance));
             books.Add(new Book("Beloved", "Beloved", "Toni Morrison", "placeholder", BookCategory.Classics));
+            books.Add(new Book("PrideAndPrejudice", "Pride And Prejudice", "Jane Austen", "placeholder", BookCategory.Romance));
             books.Add(new Book("TheMoonIsAHarshMistress", "The Moon Is A Harsh Mistress", "Robert Heinlein", "placeholder", BookCategory.ScienceFiction));
-
             return books;
         }
 

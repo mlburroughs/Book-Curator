@@ -36,6 +36,7 @@
                       IsEditable="True"
                       Text="Book Categories"
                       Margin ="10,10,10,10"
+                      SelectedIndex="0"
                       SelectionChanged="SelectCategory_SelectionChanged">
             </ComboBox>
         </RelativePanel>
@@ -47,7 +48,6 @@
             </Grid.RowDefinitions>
 
             <TextBlock Name="BookCategoryTitle"
-                       Text="All Books"
                        FontSize="30"
                        FontFamily="Georgia" 
                        FontWeight="Bold"

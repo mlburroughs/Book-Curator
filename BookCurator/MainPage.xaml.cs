@@ -26,7 +26,7 @@ namespace BookCurator
     {
         private readonly ObservableCollection<Book> Books;
         private readonly List<MenuItem> MenuItems;
-        private readonly ObservableCollection<Book> BookSelections;
+        private ObservableCollection<Book> BookSelections;
         private readonly ObservableCollection<Book> BooksToAdd;
         private MenuItem Selection;
 
