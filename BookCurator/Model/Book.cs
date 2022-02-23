@@ -35,7 +35,7 @@ namespace BookCurator.Model
             Title = title;
             Author = author;
             Description = description;
-            ImageFile = $"/Assets/Images/{category}/{label}.png";
+            ImageFile = $"/Assets/Images/Genres/{category}/{label}.png";
             Category = category;
             UnselectedBook = true;
         }

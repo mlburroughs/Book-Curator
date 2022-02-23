@@ -17,11 +17,37 @@
         </Grid.RowDefinitions>
 
         <RelativePanel Name="TopPanel">
-            <TextBlock x:Name ="ProductName" 
-                     RelativePanel.AlignLeftWithPanel="True"
+            <Button Name="Logo"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Height="50"
+                    Margin="10"
+                    Background="Transparent"
+                    Foreground="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.ThemeDictionaries>
+                            <ResourceDictionary x:Key="Dark">
+                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Transparent"/>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                            </ResourceDictionary>
+                            <ResourceDictionary x:Key="Light">
+                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Transparent"/>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                            </ResourceDictionary>
+                        </ResourceDictionary.ThemeDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <Image Source="/Assets/Images/Icons/MainLogoBook150px.png"
+                       MaxHeight="50"/>
+            </Button>
+            <TextBlock x:Name ="ProductName"
+                     RelativePanel.RightOf="Logo"
+                     RelativePanel.AlignVerticalCenterWith="Logo"
                      Text="Book Curator" 
-                     Margin ="20,20,20,20"
-                     FontFamily="Georgia" 
+                     Margin ="0 5 5 5"
+                     FontFamily="Georgia"
                      FontWeight="Bold"
                      FontSize="25"
                      Foreground="DarkRed"/>
@@ -29,14 +55,13 @@
             <ComboBox Name="SelectCategory"
                       ItemsSource="{x:Bind MenuItems}"
                       RelativePanel.RightOf="ProductName"
-                      RelativePanel.AlignVerticalCenterWith="ProductName"
+                      RelativePanel.AlignVerticalCenterWith="Logo"
                       Height="40"
                       Width="180"
                       FontFamily="Verdana"
-                      IsEditable="True"
-                      Text="Book Categories"
-                      Margin ="10,10,10,10"
-                      SelectedIndex="0"
+                      IsEditable="False"
+                      PlaceholderText="Book Categories"
+                      Margin ="10"
                       SelectionChanged="SelectCategory_SelectionChanged">
             </ComboBox>
         </RelativePanel>

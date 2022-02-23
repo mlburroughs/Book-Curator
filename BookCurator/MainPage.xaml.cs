@@ -30,9 +30,14 @@ namespace BookCurator
         private readonly ObservableCollection<Book> BooksToAdd;
         private MenuItem Selection;
 
+        private readonly string LogoPath;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            LogoPath = $"/Assets/Images/Icons/MainLogoBook75px.png";
+
             Books = new ObservableCollection<Book>();
             BookManager.GetAllBooks(Books);
 

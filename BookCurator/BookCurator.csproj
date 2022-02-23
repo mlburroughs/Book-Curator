@@ -133,9 +133,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Images\Classics\Beloved.png" />
-    <Content Include="Assets\Images\Romance\PrideAndPrejudice.png" />
-    <Content Include="Assets\Images\ScienceFiction\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Genres\Classics\Beloved.png" />
+    <Content Include="Assets\Images\Genres\Romance\PrideAndPrejudice.png" />
+    <Content Include="Assets\Images\Genres\ScienceFiction\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Icons\MainLogoBook150px.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -159,6 +160,12 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\Genres\Biographies\" />
+    <Folder Include="Assets\Images\Genres\Fantasy\" />
+    <Folder Include="Assets\Images\Genres\History\" />
+    <Folder Include="Assets\Images\Genres\Mystery\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

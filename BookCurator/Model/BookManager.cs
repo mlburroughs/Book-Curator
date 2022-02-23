@@ -26,6 +26,14 @@ namespace BookCurator.Model
             filteredBooks.ForEach(book => books.Add(book));
         }
 
+        public static void GetBooksByAuthor(ObservableCollection<Book> books, ObservableCollection<Book> collection, String author)
+        {
+            var filteredBooks = collection.Where(book => book.Author == author && book.UnselectedBook).ToList();
+            books.Clear();
+
+            filteredBooks.ForEach(book => books.Add(book));
+        }
+
         private static List<Book> GetBooks()
         {
             var books = new List<Book>();
