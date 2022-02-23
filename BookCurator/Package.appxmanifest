@@ -30,7 +30,7 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="BookCurator.App">
+      EntryPoint="Book Curator.App">
       <uap:VisualElements
         DisplayName="Book Curator"
         Square150x150Logo="Assets\Square150x150Logo.png"
