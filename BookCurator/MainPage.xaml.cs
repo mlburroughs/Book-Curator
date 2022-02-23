@@ -36,7 +36,7 @@ namespace BookCurator
         {
             this.InitializeComponent();
 
-            LogoPath = $"/Assets/Images/Icons/MainLogoBook75px.png";
+            LogoPath = $"/Assets/Images/Icons/MainLogoBook.png";
 
             Books = new ObservableCollection<Book>();
             BookManager.GetAllBooks(Books);
@@ -46,6 +46,11 @@ namespace BookCurator
             BookManager.GetAllBooks(BooksToAdd);
 
             MenuItems = new List<MenuItem>();
+            MenuItems.Add(new MenuItem
+            {
+                CategoryTitle = "All Books",
+                Category = BookCategory.AllBooks
+            });
             MenuItems.Add(new MenuItem
             {
                 CategoryTitle = "Biographies",

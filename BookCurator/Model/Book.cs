@@ -9,6 +9,7 @@ namespace BookCurator.Model
 
     public enum BookCategory
     {
+        AllBooks,
         Biographies,
         Classics,
         Fantasy,
