@@ -18,6 +18,7 @@
 
         <RelativePanel Name="TopPanel">
             <Button Name="Logo"
+                    Click="Logo_Click"
                     RelativePanel.AlignLeftWithPanel="True"
                     Height="50"
                     Margin="10"
@@ -59,6 +60,7 @@
                       Height="40"
                       Width="180"
                       FontFamily="Verdana"
+                      Background="White"
                       IsEditable="False"
                       PlaceholderText="Book Categories"
                       Margin ="10"

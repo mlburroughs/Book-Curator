@@ -99,7 +99,11 @@ namespace BookCurator
             BookManager.UpdateStatus(Books, selectedBook);
             BookManager.GetSelectedBooks(BookSelections, Books);
             BookManager.GetUnselectedBooks(BooksToAdd, Books);
-            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
+            if (SelectCategory.SelectedIndex > -1)
+            {
+                BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category); 
+             }
+            
         }
 
         private void SelectedBooks_ItemClick(object sender, ItemClickEventArgs e)
@@ -109,8 +113,15 @@ namespace BookCurator
             BookManager.UpdateStatus(Books, unselectedBook);
             BookManager.GetSelectedBooks(BookSelections, Books);
             BookManager.GetUnselectedBooks(BooksToAdd, Books);
-            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
+            if (SelectCategory.SelectedIndex > -1) 
+            {
+                BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
+            }
         }
 
+        private void Logo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
