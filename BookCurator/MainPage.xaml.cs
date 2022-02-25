@@ -19,32 +19,34 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BookCurator
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    
     public sealed partial class MainPage : Page
     {
-        private readonly ObservableCollection<Book> Books;
-        private readonly List<MenuItem> MenuItems;
-        private ObservableCollection<Book> BookSelections;
-        private readonly ObservableCollection<Book> BooksToAdd;
-        private MenuItem Selection;
+        private readonly ObservableCollection<Book> Books;// Collection of all books
+        private readonly ObservableCollection<Book> BooksToAdd;// Collection of all books availble for selection
+        private ObservableCollection<Book> BookSelections;// Collection of books selected by user
 
-        private readonly string LogoPath;
+        private readonly List<MenuItem> MenuItems;// List of Category Menu Items
+        
+        private MenuItem Selection;// Selected MenuItem from ComboBox
+
 
         public MainPage()
         {
             this.InitializeComponent();
 
-            LogoPath = $"/Assets/Images/Icons/MainLogoBook.png";
-
+            // Create collection of all books
             Books = new ObservableCollection<Book>();
             BookManager.GetAllBooks(Books);
 
+            // Create collection of user-selected books
             BookSelections = new ObservableCollection<Book>();
+
+            // Create collection of books available for selection
             BooksToAdd = new ObservableCollection<Book>();
             BookManager.GetAllBooks(BooksToAdd);
 
+            // Create Menu Items of book genres for ComboBox
             MenuItems = new List<MenuItem>();
             MenuItems.Add(new MenuItem
             {
@@ -89,14 +91,15 @@ namespace BookCurator
 
         }
 
+        // Updates BooksToAdd collection based on user-selected MenuItem
         private void SelectCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             Selection = (MenuItem)SelectCategory.SelectedItem;
             BookCategoryTitle.Text = Selection.CategoryTitle;
             BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
         }
 
+        // Adds Book to BookSelections collection and removes Book from BooksToAdd
         private void BooksInCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
             Book selectedBook = (Book)e.ClickedItem;
@@ -111,6 +114,7 @@ namespace BookCurator
             
         }
 
+        // Removes Book from BookSelections collection and adds Book to BooksToAdd
         private void SelectedBooks_ItemClick(object sender, ItemClickEventArgs e)
         {
             Book unselectedBook = (Book)e.ClickedItem;
@@ -124,7 +128,14 @@ namespace BookCurator
             }
         }
 
+        // 
         private void Logo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //
+        private void Reset_Click(object sender, RoutedEventArgs e)
         {
 
         }

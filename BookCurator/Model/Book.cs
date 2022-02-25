@@ -26,8 +26,8 @@ namespace BookCurator.Model
         public string Title { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
-        public string ImageFile { get; set; }
         public BookCategory Category { get; set; }
+        public string ImageFile { get; set; }
         public bool UnselectedBook { get; set; }
 
         public Book(string label, string title, string author, string description, BookCategory category)

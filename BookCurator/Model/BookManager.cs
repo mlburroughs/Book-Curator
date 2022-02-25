@@ -9,7 +9,7 @@ namespace BookCurator.Model
 {
     class BookManager
     {
-
+        // Places all books in collection
         public static void GetAllBooks(ObservableCollection<Book> books)
         {
             var allBooks = GetBooks();
@@ -18,6 +18,7 @@ namespace BookCurator.Model
             allBooks.ForEach(book => books.Add(book));
         }
 
+        // Places books in collection based on category
         public static void GetBooksByCategory(ObservableCollection<Book> books, ObservableCollection<Book> collection, BookCategory category)
         {
             var filteredBooks = collection.Where(book => book.Category == category && book.UnselectedBook).ToList();
@@ -26,6 +27,7 @@ namespace BookCurator.Model
             filteredBooks.ForEach(book => books.Add(book));
         }
 
+        // Places books in collection based on author
         public static void GetBooksByAuthor(ObservableCollection<Book> books, ObservableCollection<Book> collection, String author)
         {
             var filteredBooks = collection.Where(book => book.Author == author && book.UnselectedBook).ToList();
@@ -34,6 +36,7 @@ namespace BookCurator.Model
             filteredBooks.ForEach(book => books.Add(book));
         }
 
+        // Generates a list of <Book> items
         private static List<Book> GetBooks()
         {
             var books = new List<Book>();
@@ -43,6 +46,7 @@ namespace BookCurator.Model
             return books;
         }
 
+        // Retrieves selected books
         public static void GetSelectedBooks(ObservableCollection<Book> selectedBooks, ObservableCollection<Book> allBooks)
         {
             var filteredBooks = allBooks.Where(book => book.UnselectedBook == false).ToList();
@@ -51,6 +55,7 @@ namespace BookCurator.Model
             filteredBooks.ForEach(book => selectedBooks.Add(book));
         }
 
+        // Retrieves unselected books
         public static void GetUnselectedBooks(ObservableCollection<Book> unselectedBooksCollection, ObservableCollection<Book> allBooks)
         {
             var filteredBooks = allBooks.Where(book => book.UnselectedBook).ToList();
@@ -59,6 +64,7 @@ namespace BookCurator.Model
             filteredBooks.ForEach(book => unselectedBooksCollection.Add(book));
         }
 
+        // Updates Book.UnselectedBook attribute
         public static void UpdateStatus(ObservableCollection<Book> books, Book book)
         {
             foreach(Book item in books)
