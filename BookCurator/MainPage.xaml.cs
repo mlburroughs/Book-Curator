@@ -135,7 +135,12 @@ namespace BookCurator
         }
 
         //
-        private void Reset_Click(object sender, RoutedEventArgs e)
+        private void Library_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MyResetButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

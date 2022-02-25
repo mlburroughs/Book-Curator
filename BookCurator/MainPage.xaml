@@ -11,9 +11,10 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
 
         <RelativePanel Name="TopPanel">
@@ -21,7 +22,7 @@
                     Click="Logo_Click"
                     RelativePanel.AlignLeftWithPanel="True"
                     Height="50"
-                    Margin="10"
+                    Margin="5"
                     Background="Transparent"
                     Foreground="Transparent"
                     BorderBrush="Transparent"
@@ -33,37 +34,62 @@
                     </ControlTemplate>
                 </Button.Template>
 
-                <Image Source="/Assets/Images/Icons/MainLogoBook150px.png"
-                       MaxHeight="50"/>
+                <Image Source="/Assets/Images/Icons/Logo.png"
+                       MaxHeight="800"/>
             </Button>
-            <TextBlock x:Name ="ProductName"
-                     RelativePanel.RightOf="Logo"
-                     RelativePanel.AlignVerticalCenterWith="Logo"
-                     Text="Book Curator" 
-                     Margin ="0 5 5 5"
-                     FontFamily="Georgia"
-                     FontWeight="Bold"
-                     FontSize="25"
-                     Foreground="DarkRed"/>
-
             <ComboBox Name="SelectCategory"
                       ItemsSource="{x:Bind MenuItems}"
-                      RelativePanel.RightOf="ProductName"
+                      RelativePanel.RightOf="Logo"
                       RelativePanel.AlignVerticalCenterWith="Logo"
                       Height="40"
                       Width="180"
                       FontFamily="Verdana"
                       Background="White"
                       IsEditable="False"
+                      BorderBrush="DarkRed"
+                      BorderThickness="0.5"
+                      Foreground="DarkRed"
                       PlaceholderText="Book Categories"
                       Margin ="10"
                       SelectionChanged="SelectCategory_SelectionChanged">
             </ComboBox>
-            <Button Name="Reset"
-                    Click="Reset_Click"
+            
+                <Button Name="MyLibraryButton"
+                        Click="Library_Click"
+                    Height="70"
+                    Margin="5,5,5,0"
                     RelativePanel.RightOf="SelectCategory"
-                    Height="50"
-                    Margin="10"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    Foreground="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <StackPanel>
+                        <Image Source="/Assets/Images/Icons/LibraryIcon.png"
+                                MaxHeight="40"/>
+                        <TextBlock Name ="MyLibrary"
+                                    Text="My Library" 
+                                    Margin ="5 0 5 5"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Georgia"
+                                    FontWeight="Bold"
+                                    FontSize="10"
+                                    Foreground="DarkRed"/>
+                    </StackPanel>
+            </Button>
+
+            <Button Name="MyResetButton"
+                    Click="MyResetButton_Click"
+                    Height="70"
+                    Margin="5,5,5,0"
+                    RelativePanel.RightOf="MyLibraryButton"
+                    HorizontalAlignment="Center"
                     Background="Transparent"
                     Foreground="Transparent"
                     BorderBrush="Transparent"
@@ -74,10 +100,21 @@
                         <ContentPresenter Content="{TemplateBinding Content}"/>
                     </ControlTemplate>
                 </Button.Template>
-
-                <Image Source="/Assets/Images/Icons/MainLogoBook150px.png"
-                       MaxHeight="50"/>
+                <StackPanel>
+                    <Image Source="/Assets/Images/Icons/ClearIcon.png"
+                                MaxHeight="40"/>
+                    <TextBlock Name ="MyClearText"
+                                    Text="Clear Library" 
+                                    Margin ="5 0 5 5"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Georgia"
+                                    FontWeight="Bold"
+                                    FontSize="10"
+                                    Foreground="DarkRed"/>
+                </StackPanel>
             </Button>
+
+
         </RelativePanel>
 
         <Grid Grid.Row="1">

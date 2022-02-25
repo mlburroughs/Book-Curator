@@ -136,6 +136,9 @@
     <Content Include="Assets\Images\Genres\Classics\Beloved.png" />
     <Content Include="Assets\Images\Genres\Romance\PrideAndPrejudice.png" />
     <Content Include="Assets\Images\Genres\ScienceFiction\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Icons\ClearIcon.png" />
+    <Content Include="Assets\Images\Icons\LibraryIcon.png" />
+    <Content Include="Assets\Images\Icons\Logo.png" />
     <Content Include="Assets\Images\Icons\MainLogoBook.png" />
     <Content Include="Assets\Images\Icons\MainLogoBook150px.png" />
     <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
