@@ -19,9 +19,9 @@ namespace BookCurator.Model
         }
 
         // Places books in collection based on category
-        public static void GetBooksByCategory(ObservableCollection<Book> books, ObservableCollection<Book> collection, BookCategory category)
+        public static void GetBooksByCategory(ObservableCollection<Book> books, ObservableCollection<Book> collection, Genres genre)
         {
-            var filteredBooks = collection.Where(book => book.Category == category && book.UnselectedBook).ToList();
+            var filteredBooks = collection.Where(book => book.Genre == genre && book.UnselectedBook).ToList();
             books.Clear();
 
             filteredBooks.ForEach(book => books.Add(book));
@@ -40,9 +40,9 @@ namespace BookCurator.Model
         private static List<Book> GetBooks()
         {
             var books = new List<Book>();
-            books.Add(new Book("Beloved", "Beloved", "Toni Morrison", "placeholder", BookCategory.Classics));
-            books.Add(new Book("PrideAndPrejudice", "Pride And Prejudice", "Jane Austen", "placeholder", BookCategory.Romance));
-            books.Add(new Book("TheMoonIsAHarshMistress", "The Moon Is A Harsh Mistress", "Robert Heinlein", "placeholder", BookCategory.ScienceFiction));
+            books.Add(new Book("Beloved", "Beloved", "Toni Morrison", "placeholder", Genres.Classic));
+            books.Add(new Book("PrideAndPrejudice", "Pride And Prejudice", "Jane Austen", "placeholder", Genres.Romance));
+            books.Add(new Book("TheMoonIsAHarshMistress", "The Moon Is A Harsh Mistress", "Robert Heinlein", "placeholder", Genres.ScienceFiction));
             return books;
         }
 

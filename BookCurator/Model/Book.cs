@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace BookCurator.Model
 {
 
-    public enum BookCategory
+    public enum Genres
     {
-        AllBooks,
-        Biographies,
-        Classics,
+        Children,
+        Classic,
         Fantasy,
         History,
-        Mystery,
         Romance,
-        ScienceFiction
+        ScienceFiction,
+        Technical,
+        Thriller
     }
 
 
@@ -26,19 +26,19 @@ namespace BookCurator.Model
         public string Title { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
-        public BookCategory Category { get; set; }
+        public Genres Genre { get; set; }
         public string ImageFile { get; set; }
         public bool UnselectedBook { get; set; }
 
-        public Book(string label, string title, string author, string description, BookCategory category)
+        public Book(string label, string title, string author, string description, Genres genre)
         {
             Label = label;
             Title = title;
             Author = author;
             Description = description;
-            Category = category;
+            Genre = genre;
 
-            ImageFile = $"/Assets/Images/Genres/{category}/{label}.png";
+            ImageFile = $"/Assets/Images/Authors/{Genre}/{Label}.png";
             UnselectedBook = true;
         }
     }

@@ -26,9 +26,8 @@ namespace BookCurator
         private readonly ObservableCollection<Book> BooksToAdd;// Collection of all books availble for selection
         private ObservableCollection<Book> BookSelections;// Collection of books selected by user
 
-        private readonly List<MenuItem> MenuItems;// List of Category Menu Items
-        
-        private MenuItem Selection;// Selected MenuItem from ComboBox
+        private readonly List<GenreItem> GenreItems;
+        private readonly List<AuthorItem> AuthorItems;
 
 
         public MainPage()
@@ -46,72 +45,85 @@ namespace BookCurator
             BooksToAdd = new ObservableCollection<Book>();
             BookManager.GetAllBooks(BooksToAdd);
 
-            // Create Menu Items of book genres for ComboBox
-            MenuItems = new List<MenuItem>();
-            MenuItems.Add(new MenuItem
+            // Creates Author Menu
+            AuthorItems = new List<AuthorItem>();
+            AuthorItems.Add(new AuthorItem
             {
-                CategoryTitle = "All Books",
-                Category = BookCategory.AllBooks
+                Icon="/Assets/Images/Icons/Bookmark.png",
+                AuthorName = "Jane Austen"
             });
-            MenuItems.Add(new MenuItem
+            AuthorItems.Add(new AuthorItem
             {
-                CategoryTitle = "Biographies",
-                Category = BookCategory.Biographies
+                Icon = "/Assets/Images/Icons/Bookmark.png",
+                AuthorName = "Robert Heinlein"
             });
-            MenuItems.Add(new MenuItem
+            AuthorItems.Add(new AuthorItem
             {
-                CategoryTitle = "Classics",
-                Category = BookCategory.Classics
+                Icon = "/Assets/Images/Icons/Bookmark.png",
+                AuthorName = "Toni Morrison",
             });
-            MenuItems.Add(new MenuItem
+
+
+            GenreItems = new List<GenreItem>();
+            GenreItems.Add(new GenreItem
             {
-                CategoryTitle = "Fantasy",
-                Category = BookCategory.Fantasy
+                Icon = "/Assets/Images/Genres/Children.png",
+                Genre = Genres.Children
             });
-            MenuItems.Add(new MenuItem
+            GenreItems.Add(new GenreItem
             {
-                CategoryTitle = "History",
-                Category = BookCategory.History
+                Icon = "/Assets/Images/Genres/Classic.png",
+                Genre = Genres.Classic
             });
-            MenuItems.Add(new MenuItem
+            GenreItems.Add(new GenreItem
             {
-                CategoryTitle = "Mystery",
-                Category = BookCategory.Mystery
+                Icon = "/Assets/Images/Genres/Fantasy.png",
+                Genre = Genres.Fantasy
             });
-            MenuItems.Add(new MenuItem
+            GenreItems.Add(new GenreItem
             {
-                CategoryTitle = "Romance",
-                Category = BookCategory.Romance
+                Icon = "/Assets/Images/Genres/History.png",
+                Genre = Genres.History
             });
-            MenuItems.Add(new MenuItem
+            GenreItems.Add(new GenreItem
             {
-                CategoryTitle = "Science Fiction",
-                Category = BookCategory.ScienceFiction
+                Icon = "/Assets/Images/Genres/Romance.png",
+                Genre = Genres.Romance
+            });
+            GenreItems.Add(new GenreItem
+            {
+                Icon = "/Assets/Images/Genres/ScienceFiction.png",
+                Genre = Genres.ScienceFiction
+            });
+            GenreItems.Add(new GenreItem
+            {
+                Icon = "/Assets/Images/Genres/Technical.png",
+                Genre = Genres.Technical
+            });
+            GenreItems.Add(new GenreItem
+            {
+                Icon = "/Assets/Images/Genres/Thriller.png",
+                Genre = Genres.Thriller
             });
 
         }
 
-        // Updates BooksToAdd collection based on user-selected MenuItem
-        private void SelectCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Selection = (MenuItem)SelectCategory.SelectedItem;
-            BookCategoryTitle.Text = Selection.CategoryTitle;
-            BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
-        }
+
 
         // Adds Book to BookSelections collection and removes Book from BooksToAdd
         private void BooksInCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
             Book selectedBook = (Book)e.ClickedItem;
             selectedBook.UnselectedBook = false;
-            BookManager.UpdateStatus(Books, selectedBook);
+
+            // Need to handle this!
+            string newText;
+            newText = "All Books";
+            BookCategoryTitle.Text = newText;
+
             BookManager.GetSelectedBooks(BookSelections, Books);
             BookManager.GetUnselectedBooks(BooksToAdd, Books);
-            if (SelectCategory.SelectedIndex > -1)
-            {
-                BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category); 
-             }
-            
+
         }
 
         // Removes Book from BookSelections collection and adds Book to BooksToAdd
@@ -122,27 +134,84 @@ namespace BookCurator
             BookManager.UpdateStatus(Books, unselectedBook);
             BookManager.GetSelectedBooks(BookSelections, Books);
             BookManager.GetUnselectedBooks(BooksToAdd, Books);
-            if (SelectCategory.SelectedIndex > -1) 
-            {
-                BookManager.GetBooksByCategory(BooksToAdd, Books, Selection.Category);
-            }
+           
+            
         }
 
         // 
         private void Logo_Click(object sender, RoutedEventArgs e)
         {
+            string newText;
+            newText = "All Books";
+            BookCategoryTitle.Text = newText;
+
+
+            AuthorList.Visibility = Visibility.Collapsed;
+            GenreList.Visibility = Visibility.Collapsed;
+            BooksInCategory.Visibility = Visibility.Visible;
+
 
         }
 
         //
-        private void Library_Click(object sender, RoutedEventArgs e)
+        private void ByGenre_Click(object sender, RoutedEventArgs e)
         {
+            string newText;
+            newText = "All Genres";
+            BookCategoryTitle.Text = newText;
+
+
+            AuthorList.Visibility = Visibility.Collapsed;
+            GenreList.Visibility = Visibility.Visible;
+            BooksInCategory.Visibility = Visibility.Collapsed;
+        }
+
+        private void ByAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            string newText;
+            newText = "All Authors";
+            BookCategoryTitle.Text = newText;
+
+
+            AuthorList.Visibility = Visibility.Visible;
+            GenreList.Visibility = Visibility.Collapsed;
+            BooksInCategory.Visibility = Visibility.Collapsed;
+        }
+
+        private void AllBooks_Click(object sender, RoutedEventArgs e)
+        {
+            string newText;
+            newText = "All Books";
+            BookCategoryTitle.Text = newText;
+
+            AuthorList.Visibility = Visibility.Collapsed;
+            GenreList.Visibility = Visibility.Collapsed;
+            BooksInCategory.Visibility = Visibility.Visible;
 
         }
 
-        private void MyResetButton_Click(object sender, RoutedEventArgs e)
+        private void GenreList_ItemClick(object sender, ItemClickEventArgs e)
         {
+            GenreItem selectedGenre = (GenreItem)e.ClickedItem;
+            BookManager.GetBooksByCategory(BooksToAdd, Books, selectedGenre.Genre);
 
+            BookCategoryTitle.Text = selectedGenre.Genre.ToString();
+
+            GenreList.Visibility = Visibility.Collapsed;
+            BooksInCategory.Visibility = Visibility.Visible;
+
+            
+        }
+
+        private void AuthorList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AuthorItem selectedAuthor = (AuthorItem)e.ClickedItem;
+            BookManager.GetBooksByAuthor(BooksToAdd, Books, selectedAuthor.AuthorName);
+
+            BookCategoryTitle.Text = selectedAuthor.AuthorName.ToString();
+
+            AuthorList.Visibility = Visibility.Collapsed;
+            BooksInCategory.Visibility = Visibility.Visible;
         }
     }
 }

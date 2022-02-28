@@ -122,9 +122,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AuthorItem.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookManager.cs" />
-    <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\GenreItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,14 +134,24 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Images\Genres\Classics\Beloved.png" />
-    <Content Include="Assets\Images\Genres\Romance\PrideAndPrejudice.png" />
-    <Content Include="Assets\Images\Genres\ScienceFiction\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Authors\Classic\Beloved.png" />
+    <Content Include="Assets\Images\Authors\Romance\PrideAndPrejudice.png" />
+    <Content Include="Assets\Images\Authors\ScienceFiction\TheMoonIsAHarshMistress.png" />
+    <Content Include="Assets\Images\Genres\Children.png" />
+    <Content Include="Assets\Images\Genres\Classic.png" />
+    <Content Include="Assets\Images\Genres\Fantasy.png" />
+    <Content Include="Assets\Images\Genres\History.png" />
+    <Content Include="Assets\Images\Genres\Romance.png" />
+    <Content Include="Assets\Images\Genres\ScienceFiction.png" />
+    <Content Include="Assets\Images\Genres\Technical.png" />
+    <Content Include="Assets\Images\Genres\Thriller.png" />
+    <Content Include="Assets\Images\Icons\Bookmark.png" />
     <Content Include="Assets\Images\Icons\ClearIcon.png" />
     <Content Include="Assets\Images\Icons\LibraryIcon.png" />
     <Content Include="Assets\Images\Icons\Logo.png" />
     <Content Include="Assets\Images\Icons\MainLogoBook.png" />
     <Content Include="Assets\Images\Icons\MainLogoBook150px.png" />
+    <Content Include="Assets\Images\Icons\SingleBook.png" />
     <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
     <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
     <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
@@ -184,10 +195,12 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Images\Genres\Biographies\" />
-    <Folder Include="Assets\Images\Genres\Fantasy\" />
-    <Folder Include="Assets\Images\Genres\History\" />
-    <Folder Include="Assets\Images\Genres\Mystery\" />
+    <Folder Include="Assets\Images\Authors\Children\" />
+    <Folder Include="Assets\Images\Authors\Fantasy\" />
+    <Folder Include="Assets\Images\Authors\History\" />
+    <Folder Include="Assets\Images\Authors\Technical\" />
+    <Folder Include="Assets\Images\Authors\Thriller\" />
+    <Folder Include="Assets\Images\Books\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
