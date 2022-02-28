@@ -131,6 +131,13 @@ namespace BookCurator
         {
             Book unselectedBook = (Book)e.ClickedItem;
             unselectedBook.UnselectedBook = true;
+
+
+            // Need to handle this!
+            string newText;
+            newText = "All Books";
+            BookCategoryTitle.Text = newText;
+
             BookManager.UpdateStatus(Books, unselectedBook);
             BookManager.GetSelectedBooks(BookSelections, Books);
             BookManager.GetUnselectedBooks(BooksToAdd, Books);
